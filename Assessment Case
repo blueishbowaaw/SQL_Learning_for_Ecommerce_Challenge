@@ -12,3 +12,10 @@ SELECT
 FROM orders 
 	WHERE created_at 
 	BETWEEN '2019-10-01' AND '2019-10-31';
+
+--2. Pengguna yang pernah Bertransaksi?
+SELECT 
+	count (DISTINCT seller_id) as total_seller, 
+	count (DISTINCT buyer_id) as total_buyer 
+FROM 
+orders;
