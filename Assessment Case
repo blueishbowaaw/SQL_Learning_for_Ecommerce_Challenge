@@ -19,3 +19,18 @@ SELECT
 	count (DISTINCT buyer_id) as total_buyer 
 FROM 
 orders;
+
+--3. Top Buyer All Time?
+-- I choose top 10 buyer with max total transactions.
+SELECT 
+	DISTINCT buyer_id, 
+	nama_user as buyer_username, 
+	count(2) as jumlah_transaksi,
+	sum (total) as total_transactions
+FROM 
+	orders a
+	JOIN users b ON a.buyer_id = b.user_id
+GROUP BY 
+	buyer_id,buyer_username
+ORDER BY total_transactions 
+DESC LIMIT 10;
