@@ -20,8 +20,9 @@ SELECT
 FROM 
 orders;
 
+
 --3. Top Buyer All Time?
--- I choose top 10 buyer with max total transactions.
+-- I choose top 10 buyer with max total transactions
 SELECT 
 	DISTINCT buyer_id, 
 	nama_user as buyer_username, 
