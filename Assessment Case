@@ -1,7 +1,7 @@
 -- 1. Berapakah total Transaksi Bulanan?
 -- Bulan November 2019
 SELECT 
-	count(DISTINCT order_id) as total_transaksi
+	count(DISTINCT order_id) as total_transaksi_November_2019
 FROM orders 
 	WHERE created_at 
 	BETWEEN '2019-11-01' AND '2019-11-31';
