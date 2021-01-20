@@ -69,3 +69,17 @@ GROUP BY
 HAVING total_transactions > 25000000
 ORDER BY total_transactions 
 DESC LIMIT 5;
+
+--5. Top 5 Product December 2019 
+SELECT 
+	a.desc_product as product_name,
+	a.product_id, 
+	sum(b.quantity) as quantity, 
+	c.paid_at
+FROM products a
+	JOIN order_details b ON a.product_id = b.product_id
+	JOIN orders c ON b.order_id = c.order_id
+WHERE paid_at BETWEEN '2019-12-01' AND '2019-12-31'
+GROUP BY a.desc_product, a.product_id, c.paid_at
+ORDER BY quantity DESC
+LIMIT 5;
