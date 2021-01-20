@@ -52,3 +52,20 @@ GROUP BY
 HAVING total_transactions > 25000000
 ORDER BY total_transactions 
 DESC LIMIT 10;
+
+--4. Top Buyer in 2020?
+-- I choose top 10 buyer with max total transactions in 2020.
+SELECT 
+	user_id, 
+	nama_user as buyer_username, 
+	count(2) as jumlah_transaksi,
+	sum (total) as total_transactions
+FROM 
+	orders a
+	JOIN users b ON a.buyer_id = b.user_id
+WHERE created_at BETWEEN '2020-01-01' AND '2020-12-31'
+GROUP BY 
+	user,id, buyer_username
+HAVING total_transactions > 25000000
+ORDER BY total_transactions 
+DESC LIMIT 5;
