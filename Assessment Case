@@ -83,3 +83,16 @@ WHERE paid_at BETWEEN '2019-12-01' AND '2019-12-31'
 GROUP BY a.desc_product, a.product_id, c.paid_at
 ORDER BY quantity DESC
 LIMIT 5;
+
+--6. Kategori Produk terlaris di 2020
+SELECT category,
+	sum(quantity) as total_quantity,
+	created_at as date_transactions
+FROM order_details a
+	JOIN products b ON a.product_id = b.product_id 
+	JOIN orders c ON a.order_id = c.order_id
+	WHERE created_at BETWEEN '2020-01-01' AND '2020-12-31' AND delivery_at is NOT NULL
+GROUP BY category
+ORDER BY total_quantity DESC
+LIMIT 5;
+
